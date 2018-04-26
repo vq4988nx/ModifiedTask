@@ -9,16 +9,16 @@
      Custom stylesheet
     <link rel="stylesheet" href="css/styles.css" type="text/css">
 
-    <title>All Tasks</title>
+    <title>Spending Events</title>
 
 </head>
 <body>
 
-<h1>All the tasks</h1>
+<h1>Spending Events Table</h1>
 
 
 
-<h2 th:text= "${ tasks.size() } + ' spending events this month' ">Tasks to Doooo!</h2>
+<!--<h2 th:text= "${ tasks.size() } + ' spending events this month' ">Tasks to Doooo!</h2>-->
 
 <!--This is a table for all of the tasks...no matter how many there are-->
 <!--<ul>-->
@@ -44,8 +44,8 @@
     </tr>
     <tr th:each="task : ${tasks}">
         <td><button id="myBtn">Modify Entry</button></td>
-        <!--<td><a th:href="${'/delete/' + product.id}"button id="myBtnn">Delete Entry</button></a></td>-->
-        <td><button id="myBtnn">Delete Entry</button></td>
+        <td><a th:href="'/delete/' + ${task.id}"button id="myBtnn">Delete Entry</button></a></td>
+        <!--<td><button id="myBtnn">Delete Entry</button></td>-->
         <td th:text="${task.id}"></td>
         <td th:text="${task.dayt}"></td>
         <td th:text="${task.amount}"></td>

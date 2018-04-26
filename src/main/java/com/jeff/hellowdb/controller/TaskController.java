@@ -50,12 +50,19 @@ public class TaskController {
 
 
 //    Trying to fix this delete method
-//    @RequestMapping(path = "/delete/{id}", method = RequestMethod.GET)
-//    public String deleteTask(@PathVariable(name = "id") String id) {
-//        System.out.println("Hello World");
-//        TaskRepository.delete(id);
-//        return "redirect:/taskList";
-//    }
+    @RequestMapping(path = "/delete/{id}", method = RequestMethod.GET)
+    public String deleteTask(@PathVariable(name = "id") Long id) {
+        System.out.println(id);
+        tasks.deleteById(id);
+        return "redirect:/allTasks";
+    }
+
+    @RequestMapping("/taskList")
+    public ModelAndView backToTaskList(ModelMap modelMap) {
+        return new ModelAndView("taskList", modelMap);
+    }
+
+
 
 }
 
