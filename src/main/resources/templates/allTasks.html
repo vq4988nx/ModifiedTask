@@ -1,0 +1,29 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <!-- Milligram stylesheet -->
+    <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Roboto:300,300italic,700,700italic">
+    <link rel="stylesheet" href="//cdn.rawgit.com/necolas/normalize.css/master/normalize.css">
+    <link rel="stylesheet" href="//cdn.rawgit.com/milligram/milligram/master/dist/milligram.min.css">
+
+
+    <title>All Tasks</title>
+
+    </head>
+<body>
+<h1>All the Tasks</h1>
+
+<!--The template is using the variable for the tasks.size object of this particular task-->
+<h2 th:text = "${tasks.size()} + ' task(s) to do' ">Tasks to do!</h2>
+
+<ul>
+    <li th:each="task: ${tasks}">
+        <span th:text="${task.text}"></span>
+        </li>
+    </ul>
+
+<a href="/">Add a new task</a>
+
+</body>
+</html>
+
+

@@ -1,0 +1,64 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+
+     <!--Milligram stylesheet-->
+    <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Roboto:300,300italic,700,700italic">
+    <link rel="stylesheet" href="//cdn.rawgit.com/necolas/normalize.css/master/normalize.css">
+    <link rel="stylesheet" href="//cdn.rawgit.com/milligram/milligram/master/dist/milligram.min.css">
+
+     Custom stylesheet
+    <link rel="stylesheet" href="css/styles.css" type="text/css">
+
+    <title>All Tasks</title>
+
+</head>
+<body>
+
+<h1>All the tasks</h1>
+
+
+
+<h2 th:text= "${ tasks.size() } + ' spending events this month' ">Tasks to Doooo!</h2>
+
+<!--This is a table for all of the tasks...no matter how many there are-->
+<!--<ul>-->
+    <!--<li th:each="task : ${tasks}">-->
+        <!--&lt;!&ndash;If the property is task.urgent, then it will insert the urgent.png next to the table entry&ndash;&gt;-->
+        <!--&lt;!&ndash;<img class="urgent-icon" th:if="${task.urgent}" src="img/urgent.png">&ndash;&gt;-->
+        <!--<span th:text="${task.dayt}"></span><br>-->
+        <!--<span th:text="${task.amount}"></span><br>-->
+        <!--<span th:text="${task.description}"></span><br>-->
+        <!--<span th:text="${task.category}"></span><br>-->
+    <!--</li>-->
+<!--</ul>-->
+
+<table>
+    <tr>
+        <th>.</th>
+        <th>.</th>
+        <th>ID</th>
+        <th>DATE</th>
+        <th>AMOUNT</th>
+        <th>DESCRIPTION</th>
+        <th>CATEGORY</th>
+    </tr>
+    <tr th:each="task : ${tasks}">
+        <td><button id="myBtn">Modify Entry</button></td>
+        <!--<td><a th:href="${'/delete/' + product.id}"button id="myBtnn">Delete Entry</button></a></td>-->
+        <td><button id="myBtnn">Delete Entry</button></td>
+        <td th:text="${task.id}"></td>
+        <td th:text="${task.dayt}"></td>
+        <td th:text="${task.amount}"></td>
+        <td th:text="${task.description}"></td>
+        <td th:text="${task.category}"></td>
+
+    </tr>
+
+</table>
+
+<a href="/">Add a new task</a><br>
+<a href="/categoriesTable">Go to Categories Table</a><br>
+
+
+</body>
+</html>
