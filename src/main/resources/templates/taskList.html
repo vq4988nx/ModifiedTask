@@ -42,8 +42,6 @@
 
 </table>
 
-
-
     <!-- Modal form added here.  Used W3 schools tutorial for modal. -->
     <div id="myModal" class="modal">
 
@@ -58,39 +56,13 @@
 
                 <input type = "date" placeholder="date" value=task.dayt />
 
-                <!--<br><br>-->
-                <!--<input type = "text" placeholder="amount" th:field="*{amount}" />-->
-                <!--<br><br>-->
-                <!--<input type = "text" placeholder="description" th:field="*{description}" />-->
-                <!--<br><br>-->
+                <!--<input type="text" class="form-control" name="prodName" th:value="${task.description}" />-->
 
-                <!--<select name = "category" th:field="*{category}">-->
-                    <!--<option value="" disabled selected>Select Category</option>-->
-                    <!--<option value="Target">Target</option>-->
-                    <!--<option value="Clothing">Clothing</option>-->
-                    <!--<option value="Pets">Pets</option>-->
-                    <!--<option value="Mortgage/Rent">Mortgage/Rent</option>-->
-                    <!--<option value="Utilities">Utilities</option>-->
-                <!--</select>-->
-                <!--<br><br>-->
 
-                <!--<br>-->
-                <!--<button id = "add-task">Add Task</button>-->
 
             </form>
 
 
-            <!--<form method="POST" action="/modBird">-->
-                <!--Name: <input name="name" required value={{bird.name}}>-->
-                <!--<input type="hidden" name="_id" value="{{bird._id}}">-->
-                <!--<br>Description: <input name="description" value="{{bird.description}}"/>-->
-                <!--<br>Average Eggs: <input type="number" min="1" max="50" name="averageEggs" value={{bird.averageEggs}}>-->
-                <!--<br>Endangered? <input type="checkbox" name="endangered" value={{bird.endangered}}/>-->
-                <!--<br>Nest location: <input name="nestLocation" value={{bird.nest.nestLocation}}>-->
-                <!--<br>Nest materials: <input name="nestMaterials" value={{bird.nest.nestMaterials}}>-->
-                <!--<br>Height in inches: <input type = "number" name="height" min="1" max="250"value={{bird.height}}>  &lt;!&ndash; Client side validation inside modal here.&ndash;&gt;-->
-                <!--<br><input type="submit" value="submit">-->
-            <!--</form>-->
         </div>
 
     </div>
