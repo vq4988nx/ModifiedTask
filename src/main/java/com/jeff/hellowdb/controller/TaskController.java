@@ -6,10 +6,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.view.RedirectView;
+
+import java.util.Date;
 
 @Controller
 public class TaskController {
@@ -20,6 +23,9 @@ public class TaskController {
     @Autowired
     public TaskController(TaskRepository tasks) {
         this.tasks = tasks;
+        tasks.save(new Task(new Date(), 15, "Stuff", "Target"));
+        tasks.save(new Task(new Date(150000000), 42, "Things", "Pets"));
+        
     }
 
 //This will always direct to the home page
@@ -31,6 +37,7 @@ public class TaskController {
 //This is a post method that will redirect to the /addTask page
     @RequestMapping(value="/addTask", method= RequestMethod.POST)
     public RedirectView addNewTask(Task task) {
+        System.out.println(task);
         tasks.save(task);
         return new RedirectView("/allTasks");
     }
@@ -63,6 +70,12 @@ public class TaskController {
     }
 
 
+    @PostMapping("/updateTask")
+    public String updateTask(Task t) {
+        System.out.println(t);  // TODO actually do the update
+        tasks.save(t);
+        return  "redirect:/allTasks";
+    }
 
 }
 

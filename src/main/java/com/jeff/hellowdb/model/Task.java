@@ -1,6 +1,9 @@
 package com.jeff.hellowdb.model;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 import javax.persistence.*;
+import java.util.Date;
 
 @Entity
 public class Task {
@@ -8,16 +11,17 @@ public class Task {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
+    
+    @DateTimeFormat(pattern = "yyyy-MM-dd")  // The format used in the HTML date picker, year-month-day
+    private Date dayt;
 
-    private String dayt;
-
-    private String amount;
+    private double amount;
 
     private String description;
 
     private String category;
 
-    public Task(String dayt, String amount, String description, String category) {
+    public Task(Date dayt, double amount, String description, String category) {
         this.dayt = dayt;
         this.amount = amount;
         this.description = description;
@@ -35,20 +39,20 @@ public class Task {
                 '}';
     }
 
-    public String getDayt() {
+    public Date getDayt() {
         return dayt;
     }
 
 
-    public void setDayt(String dayt) {
+    public void setDayt(Date dayt) {
         this.dayt = dayt;
     }
 
-    public String getAmount() {
+    public double getAmount() {
         return amount;
     }
 
-    public void setAmount(String amount) {
+    public void setAmount(double amount) {
         this.amount = amount;
     }
 
