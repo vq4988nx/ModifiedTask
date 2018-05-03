@@ -2,12 +2,12 @@
 <script type="text/javascript" src="http://code.jquery.com/jquery-1.7.1.min.js"></script>
 <head>
 
-     <!--Milligram stylesheet-->
+    <!--Milligram stylesheet-->
     <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Roboto:300,300italic,700,700italic">
     <link rel="stylesheet" href="//cdn.rawgit.com/necolas/normalize.css/master/normalize.css">
     <link rel="stylesheet" href="//cdn.rawgit.com/milligram/milligram/master/dist/milligram.min.css">
 
-     Custom stylesheet
+    <!--Custom stylesheet-->
     <link rel="stylesheet" href="css/style.css" type="text/css">
 
     <title>Spending Events</title>
@@ -19,8 +19,7 @@
 
 <h2>Total Amount Spent</h2>
 
-<span id="val"></span>
-
+<span id="value"></span>
 
 
 <table id = "table">
@@ -34,17 +33,13 @@
         <th>CATEGORY</th>
     </tr>
     <tr th:each="task : ${tasks}">
-        <td><button id="myBtn">Modify Entry</button></td>
-        <td><a th:href="'/delete/' + ${task.id}"button id="myBtnn">Delete Entry</button></a></td>
-        <!--<td><button id="myBtnn">Delete Entry</button></td>-->
-        <td th:text="${task.id}"></td>
-        <td th:text="${task.dayt}"></td>
+        <td><button class="modify-button" th:id="'modify-button-' + ${task.id}" >Modify Entry</button></td>
+        <td><a th:id="'delete-'+${task.id}">Delete Entry</button></a></td>
+        <td th:id="'task-id-'+${task.id}" th:text="${task.id}"></td>
+        <td th:id="'task-date-'+${task.id}" th:text="${task.dayt}"></td>
         <td th:text="${task.amount}" class="rowDataSd"></td>
-        <td th:text="${task.description}"></td>
+        <td th:id="'task-description-'+${task.id}" th:text="${task.description}"></td>
         <td th:text="${task.category}"></td>
-
-
-
     </tr>
 
 </table>
@@ -70,51 +65,34 @@
 
 </script>
 
-<!--<script>-->
-    <!--var table=document.getElementById("table"), sumVal;-->
+<!-- Modal form added here.  Used W3 schools tutorial for modal. -->
+<div id="myModal" class="modal">
 
-    <!--for (var i = 1; i < tasks.length; i++)-->
-    <!--{-->
-        <!--sumVal = sumVal + parseInt(table.rows[i].cells[2].innerHTML);-->
-    <!--}-->
+    <!-- Modal content -->
+    <div class="modal-content">
+        <span class="close">&times;</span>
 
-    <!--console.log(sumVal)-->
+        <form action="/updateTask" method="POST" th:action="@{/updateTask}">
 
-<!--</script>-->
+            <p>Hello, testing</p>
 
-    <!-- Modal form added here.  Used W3 schools tutorial for modal. -->
-    <div id="myModal" class="modal">
+            <input id="modal-edit-id" name="id" type="hidden" class="form-control"/>
+            <input id="modal-edit-description" name="description" type="text" placeholder="description" class="form-control"/>
+            <input id="modal-edit-date" name="dayt" type = "date" placeholder="date" />
 
-        <!-- Modal content -->
-        <div class="modal-content">
-            <span class="close">&times;</span>
+            <button type="submit">Update</button>
 
-            <form action="#" method="POST" th:action="@{/addTask}" th:object="${task}">
-
-                <p>Hello, testing</p>
-                <input type="text" class="form-control" value=task.amount />
-
-                <input type = "date" placeholder="date" value=task.dayt />
-
-                <!--<input type="text" class="form-control" name="prodName" th:value="${task.description}" />-->
-
-
-
-            </form>
-
-
-        </div>
+        </form>
 
     </div>
-    <br><br>
 
-    <br>
+</div>
 </div>
 
 </div>
 
 
-    </div>
+</div>
 
 </div>
 
@@ -123,7 +101,7 @@
 <a href="/categoriesTable">Go to Categories Table</a><br>
 
 
-<script src="js/modals.js"></script>
+<script type="text/javascript" src="js/modals.js"></script>
 
 
 </body>
